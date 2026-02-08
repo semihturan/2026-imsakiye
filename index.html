@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bursa 2026 Ramazan İmsakiyesi</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card-bg: #ffffff;
+      --border: #e1e7f0;
+      --primary: #1d4ed8;
+      --primary-soft: #e0edff;
+      --text-main: #1f2933;
+      --text-sub: #52606d;
+      --accent: #0f766e;
+      --danger: #b91c1c;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      margin: 0;
+      padding: 20px;
+      color: var(--text-main);
+    }
+    h1 {
+      text-align: center;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+    h2 {
+      text-align: center;
+      color: var(--text-sub);
+      margin-top: 0;
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Info cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 600px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-sub);
+    }
+    .card-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .card-sub {
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    .card--min .card-value {
+      color: var(--accent);
+    }
+    .card--max .card-value {
+      color: var(--danger);
+    }
+
+    /* Table container */
+    .table-container {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    thead {
+      background: linear-gradient(90deg, #1d4ed8, #2563eb);
+      color: #ffffff;
+    }
+    thead th {
+      padding: 10px 8px;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #f9fbff;
+    }
+    tbody tr:nth-child(odd) {
+      background-color: #ffffff;
+    }
+    tbody tr:hover {
+      background-color: var(--primary-soft);
+    }
+    td {
+      padding: 8px 10px;
+      text-align: center;
+      color: var(--text-main);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    td:first-child {
+      text-align: left;
+      font-weight: 500;
+    }
+    td:nth-child(2) {
+      font-weight: 500;
+      color: #334e68;
+    }
+    .duration {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* Legend / small info */
+    .footer-note {
+      font-size: 12px;
+      color: var(--text-sub);
+      text-align: center;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <header>
+      <h1>Bursa 2026 Ramazan İmsakiyesi</h1>
+      <h2>İmsak – İftar Saatleri ve Oruç Süreleri</h2>
+    </header>
+
+    <!-- Info cards (infografik tarzı özet) -->
+    <section class="cards">
+      <div class="card">
+        <div class="card-label">Toplam Gün</div>
+        <div class="card-value" id="total-days">–</div>
+        <div class="card-sub">Bu yıl Ramazan süresince</div>
+      </div>
+
+      <div class="card card--min">
+        <div class="card-label">En Kısa Oruç</div>
+        <div class="card-value" id="min-duration">–</div>
+        <div class="card-sub" id="min-duration-date">Tarih bilgisi</div>
+      </div>
+
+      <div class="card card--max">
+        <div class="card-label">En Uzun Oruç</div>
+        <div class="card-value" id="max-duration">–</div>
+        <div class="card-sub" id="max-duration-date">Tarih bilgisi</div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Ortalama Oruç Süresi</div>
+        <div class="card-value" id="avg-duration">–</div>
+        <div class="card-sub">Saat:dakika cinsinden ortalama</div>
+      </div>
+    </section>
+
+    <!-- Main table -->
+    <section class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Tarih</th>
+            <th>Gün</th>
+            <th>Hicrî Tarih</th>
+            <th>İmsak</th>
+            <th>Akşam (İftar)</th>
+            <th>İmsak–İftar Farkı</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- JS ile doldurulacak -->
+        </tbody>
+      </table>
+    </section>
+
+    <div class="footer-note">
+      Bursa için 2026 Ramazan ayı imsak ve iftar vakitleri; son sütunda oruç süresi saat:dakika formatındadır.
+    </div>
+  </div>
+
+  <script>
+    // VERİ DİZİSİ (Buraya Mudanya/Bursa günlerini ekleyebilirsin)
+    // durationMinutes: İmsak–İftar farkı (dakika cinsinden)
+    const data = [
+      { date: "19 Şubat 2026", day: "Perşembe", hijri: "1 Ramazan 1447", imsak: "06:21", iftar: "18:50", duration: "12:29", durationMinutes: 12 * 60 + 29 },
+      { date: "20 Şubat 2026", day: "Cuma",      hijri: "2 Ramazan 1447", imsak: "06:20", iftar: "18:51", duration: "12:31", durationMinutes: 12 * 60 + 31 },
+      { date: "21 Şubat 2026", day: "Cumartesi", hijri: "3 Ramazan 1447", imsak: "06:19", iftar: "18:52", duration: "12:33", durationMinutes: 12 * 60 + 33 },
+      { date: "22 Şubat 2026", day: "Pazar",     hijri: "4 Ramazan 1447", imsak: "06:17", iftar: "18:54", duration: "12:37", durationMinutes: 12 * 60 + 37 },
+      { date: "23 Şubat 2026", day: "Pazartesi", hijri: "5 Ramazan 1447", imsak: "06:16", iftar: "18:55", duration: "12:39", durationMinutes: 12 * 60 + 39 },
+      { date: "24 Şubat 2026", day: "Salı",      hijri: "6 Ramazan 1447", imsak: "06:15", iftar: "18:56", duration: "12:41", durationMinutes: 12 * 60 + 41 },
+      { date: "25 Şubat 2026", day: "Çarşamba",  hijri: "7 Ramazan 1447", imsak: "06:13", iftar: "18:57", duration: "12:44", durationMinutes: 12 * 60 + 44 },
+      { date: "26 Şubat 2026", day: "Perşembe",  hijri: "8 Ramazan 1447", imsak: "06:12", iftar: "18:58", duration: "12:46", durationMinutes: 12 * 60 + 46 },
+      { date: "27 Şubat 2026", day: "Cuma",      hijri: "9 Ramazan 1447", imsak: "06:11", iftar: "18:59", duration: "12:48", durationMinutes: 12 * 60 + 48 },
+      { date: "28 Şubat 2026", day: "Cumartesi", hijri: "10 Ramazan 1447", imsak: "06:09", iftar: "19:00", duration: "12:51", durationMinutes: 12 * 60 + 51 },
+      { date: "01 Mart 2026",  day: "Pazar",     hijri: "11 Ramazan 1447", imsak: "06:08", iftar: "19:02", duration: "12:54", durationMinutes: 12 * 60 + 54 },
+      { date: "02 Mart 2026",  day: "Pazartesi", hijri: "12 Ramazan 1447", imsak: "06:06", iftar: "19:03", duration: "12:57", durationMinutes: 12 * 60 + 57 },
+      { date: "03 Mart 2026",  day: "Salı",      hijri: "13 Ramazan 1447", imsak: "06:05", iftar: "19:04", duration: "12:59", durationMinutes: 12 * 60 + 59 },
+      { date: "04 Mart 2026",  day: "Çarşamba",  hijri: "14 Ramazan 1447", imsak: "06:03", iftar: "19:05", duration: "13:02", durationMinutes: 13 * 60 + 2 },
+      { date: "05 Mart 2026",  day: "Perşembe",  hijri: "15 Ramazan 1447", imsak: "06:02", iftar: "19:06", duration: "13:04", durationMinutes: 13 * 60 + 4 },
+      { date: "06 Mart 2026",  day: "Cuma",      hijri: "16 Ramazan 1447", imsak: "06:00", iftar: "19:07", duration: "13:07", durationMinutes: 13 * 60 + 7 },
+      { date: "07 Mart 2026",  day: "Cumartesi", hijri: "17 Ramazan 1447", imsak: "05:59", iftar: "19:08", duration: "13:09", durationMinutes: 13 * 60 + 9 },
+      { date: "08 Mart 2026",  day: "Pazar",     hijri: "18 Ramazan 1447", imsak: "05:57", iftar: "19:09", duration: "13:12", durationMinutes: 13 * 60 + 12 },
+      { date: "09 Mart 2026",  day: "Pazartesi", hijri: "19 Ramazan 1447", imsak: "05:55", iftar: "19:10", duration: "13:15", durationMinutes: 13 * 60 + 15 },
+      { date: "10 Mart 2026",  day: "Salı",      hijri: "20 Ramazan 1447", imsak: "05:54", iftar: "19:11", duration: "13:17", durationMinutes: 13 * 60 + 17 },
+      { date: "11 Mart 2026",  day: "Çarşamba",  hijri: "21 Ramazan 1447", imsak: "05:52", iftar: "19:12", duration: "13:20", durationMinutes: 13 * 60 + 20 },
+      { date: "12 Mart 2026",  day: "Perşembe",  hijri: "22 Ramazan 1447", imsak: "05:50", iftar: "19:14", duration: "13:24", durationMinutes: 13 * 60 + 24 },
+      { date: "13 Mart 2026",  day: "Cuma",      hijri: "23 Ramazan 1447", imsak: "05:49", iftar: "19:15", duration: "13:26", durationMinutes: 13 * 60 + 26 },
+      { date: "14 Mart 2026",  day: "Cumartesi", hijri: "24 Ramazan 1447", imsak: "05:47", iftar: "19:16", duration: "13:29", durationMinutes: 13 * 60 + 29 },
+      { date: "15 Mart 2026",  day: "Pazar",     hijri: "25 Ramazan 1447", imsak: "05:45", iftar: "19:17", duration: "13:32", durationMinutes: 13 * 60 + 32 },
+      { date: "16 Mart 2026",  day: "Pazartesi", hijri: "26 Ramazan 1447", imsak: "05:44", iftar: "19:18", duration: "13:34", durationMinutes: 13 * 60 + 34 },
+      { date: "17 Mart 2026",  day: "Salı",      hijri: "27 Ramazan 1447", imsak: "05:42", iftar: "19:19", duration: "13:37", durationMinutes: 13 * 60 + 37 },
+      { date: "18 Mart 2026",  day: "Çarşamba",  hijri: "28 Ramazan 1447", imsak: "05:40", iftar: "19:20", duration: "13:40", durationMinutes: 13 * 60 + 40 },
+      { date: "19 Mart 2026",  day: "Perşembe",  hijri: "29 Ramazan 1447", imsak: "05:39", iftar: "19:21", duration: "13:42", durationMinutes: 13 * 60 + 42 }
+    ];
+
+    function minutesToHHMM(mins) {
+      const h = Math.floor(mins / 60);
+      const m = mins % 60;
+      const mm = m.toString().padStart(2, "0");
+      return `${h}:${mm}`;
+    }
+
+    function populateTable() {
+      const tbody = document.getElementById("table-body");
+      tbody.innerHTML = "";
+
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${row.date}</td>
+          <td>${row.day}</td>
+          <td>${row.hijri}</td>
+          <td>${row.imsak}</td>
+          <td>${row.iftar}</td>
+          <td class="duration">${row.duration}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function populateCards() {
+      const totalDays = data.length;
+      const totalEl = document.getElementById("total-days");
+      totalEl.textContent = totalDays;
+
+      let minObj = data[0];
+      let maxObj = data[0];
+      let sum = 0;
+
+      data.forEach(row => {
+        sum += row.durationMinutes;
+        if (row.durationMinutes < minObj.durationMinutes) minObj = row;
+        if (row.durationMinutes > maxObj.durationMinutes) maxObj = row;
+      });
+
+      const avg = Math.round(sum / totalDays);
+
+      document.getElementById("min-duration").textContent = minutesToHHMM(minObj.durationMinutes);
+      document.getElementById("min-duration-date").textContent = `${minObj.date} (${minObj.day})`;
+
+      document.getElementById("max-duration").textContent = minutesToHHMM(maxObj.durationMinutes);
+      document.getElementById("max-duration-date").textContent = `${maxObj.date} (${maxObj.day})`;
+
+      document.getElementById("avg-duration").textContent = minutesToHHMM(avg);
+    }
+
+    // Sayfa yüklendiğinde tablo ve infografik kartlarını doldur
+    document.addEventListener("DOMContentLoaded", () => {
+      populateTable();
+      populateCards();
+    });
+  </script>
+</body>
+</html>
