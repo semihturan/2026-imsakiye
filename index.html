@@ -13,8 +13,8 @@
       --text-main: #1f2933;
       --text-sub: #52606d;
       --accent: #0f766e;
-      --danger: #b91c1c;
-      --success: #16a34a;
+      --danger: #dc2626;  /* Daha belirgin bir kırmızı */
+      --success: #16a34a; /* Daha belirgin bir yeşil */
     }
     * { box-sizing: border-box; }
     body {
@@ -27,64 +27,98 @@
     h1 { text-align: center; margin-bottom: 4px; color: var(--text-main); }
     h2 { text-align: center; color: var(--text-sub); margin-top: 0; font-weight: 500; font-size: 16px; }
 
-    .layout { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
-    .controls { display:none; }
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
 
+    /* Şehir/İlçe seçimi gizli */
+    .controls { display: none; }
+
+    /* Kartlar (Infografik) */
     .cards {
-      display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
     }
-    @media(max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));}}
-    @media(max-width:600px){.cards{grid-template-columns:1fr;}}
-    .card{
-      background:var(--card-bg);border-radius:12px;padding:12px 14px;
-      border:1px solid var(--border);box-shadow:0 6px 18px rgba(15,23,42,0.08);
-      display:flex;flex-direction:column;gap:4px;
+    @media (max-width: 900px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
-    .card-label{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-sub);}
-    .card-value{font-size:20px;font-weight:700;color:var(--primary);}
-    .card-sub{font-size:12px;color:var(--text-sub);}
-    .card--min .card-value{color:var(--accent);}
-    .card--max .card-value{color:var(--danger);}
+    .card-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-sub); }
+    .card-value { font-size: 20px; font-weight: 700; color: var(--primary); }
+    .card-sub { font-size: 12px; color: var(--text-sub); }
+    .card--min .card-value { color: var(--accent); }
+    .card--max .card-value { color: var(--danger); }
 
-    .table-container{background:var(--card-bg);border-radius:12px;
-      box-shadow:0 12px 30px rgba(15,23,42,0.15);overflow:hidden;
-      border:1px solid var(--border);}
-    table{width:100%;border-collapse:collapse;font-size:14px;}
-    thead{background:linear-gradient(90deg,#1d4ed8,#2563eb);color:#fff;}
-    thead th{padding:10px 8px;text-align:center;font-weight:600;}
-    tbody tr:nth-child(even){background:#f9fbff;}
-    tbody tr:nth-child(odd){background:#fff;}
-    tbody tr:hover{background:var(--primary-soft);}
-    td{padding:8px 10px;text-align:center;color:var(--text-main);border-bottom:1px solid var(--border);}
-    td:first-child{text-align:left;font-weight:500;}
-    td:nth-child(2){color:#334e68;font-weight:500;}
-    .duration{font-weight:600;color:var(--accent);}
-    .footer-note{text-align:center;margin-top:8px;color:var(--text-sub);font-size:12px;}
+    /* Tablo */
+    .table-container {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead { background: linear-gradient(90deg, #1d4ed8, #2563eb); color: #ffffff; }
+    thead th { padding: 10px 8px; text-align: center; font-weight: 600; white-space: nowrap; }
+    tbody tr:nth-child(even) { background-color: #f9fbff; }
+    tbody tr:nth-child(odd) { background-color: #ffffff; }
+    tbody tr:hover { background-color: var(--primary-soft); }
+    td {
+      padding: 8px 10px;
+      text-align: center;
+      color: var(--text-main);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    td:first-child { text-align: left; font-weight: 500; }
+    td:nth-child(2) { color: #334e68; font-weight: 500; }
+    .duration { font-weight: 600; color: var(--accent); }
 
-    /* Badge Güncelleme */
+    .footer-note {
+      text-align: center;
+      margin-top: 8px;
+      color: var(--text-sub);
+      font-size: 12px;
+    }
+
+    /* BADGE TASARIMI (İsteklerinize göre güncellendi) */
     .badge {
       display: inline-flex;
       align-items: center;
-      font-size: 10.5px;
-      font-weight: 500;
+      justify-content: center;
+      font-size: 11px;    /* Biraz daha ince görünüm için font boyutu ayarı */
+      font-weight: 400;   /* Font kalınlığı inceltildi */
       margin-left: 6px;
       padding: 1px 6px;
-      border-radius: 12px;
-      color: #f1f5f9;  /* açık beyazımsı, gözü yormaz */
-      letter-spacing: 0.2px;
-    }
-    .badge.up {
-      background: var(--success);
-    }
-    .badge.down {
-      background: var(--danger);
+      border-radius: 4px;
+      color: #ffffff;     /* Metin rengi BEYAZ */
+      min-width: 45px;    /* Hizalama düzgün dursun diye */
     }
     .badge .arrow {
-      font-weight: 700;
-      color: #fff;
-      margin-right: 2px;
-      font-size: 11px;
+      font-family: Arial, sans-serif; /* Ok şekli net olsun diye */
+      font-size: 10px;
+      margin-right: 3px;
+      color: #ffffff;     /* Ok rengi BEYAZ */
     }
+    
+    /* Renkler */
+    .badge.green { background-color: var(--success); }
+    .badge.red   { background-color: var(--danger); }
+
   </style>
 </head>
 <body>
@@ -92,107 +126,232 @@
     <header>
       <h1 id="page-title">Bursa 2026 Ramazan İmsakiyesi</h1>
       <h2>İmsak – İftar Saatleri ve Oruç Süreleri</h2>
+      
+      <!-- Gizli Seçiciler -->
       <div class="controls">
-        <label>İl<select id="city-select"><option value="Bursa" selected>Bursa</option></select></label>
-        <label>İlçe<select id="district-select"><option value="Mudanya" selected>Mudanya</option></select></label>
+        <select id="city-select"><option value="Bursa" selected>Bursa</option></select>
+        <select id="district-select"><option value="Mudanya" selected>Mudanya</option></select>
       </div>
       <input type="hidden" id="city-hidden" value="Bursa">
       <input type="hidden" id="district-hidden" value="Mudanya">
     </header>
 
+    <!-- Özet Kartlar -->
     <section class="cards">
-      <div class="card"><div class="card-label">Toplam Gün</div><div class="card-value" id="total-days">–</div></div>
-      <div class="card card--min"><div class="card-label">En Kısa Oruç</div><div class="card-value" id="min-duration">–</div><div class="card-sub" id="min-duration-date"></div></div>
-      <div class="card card--max"><div class="card-label">En Uzun Oruç</div><div class="card-value" id="max-duration">–</div><div class="card-sub" id="max-duration-date"></div></div>
-      <div class="card"><div class="card-label">Ortalama Süre</div><div class="card-value" id="avg-duration">–</div></div>
+      <div class="card">
+        <div class="card-label">Toplam Gün</div>
+        <div class="card-value" id="total-days">0</div>
+        <div class="card-sub">Bu yıl Ramazan süresince</div>
+      </div>
+      <div class="card card--min">
+        <div class="card-label">En Kısa Oruç</div>
+        <div class="card-value" id="min-duration">–</div>
+        <div class="card-sub" id="min-duration-date"></div>
+      </div>
+      <div class="card card--max">
+        <div class="card-label">En Uzun Oruç</div>
+        <div class="card-value" id="max-duration">–</div>
+        <div class="card-sub" id="max-duration-date"></div>
+      </div>
+      <div class="card">
+        <div class="card-label">Ortalama Süre</div>
+        <div class="card-value" id="avg-duration">–</div>
+        <div class="card-sub">Saat:dakika</div>
+      </div>
     </section>
 
+    <!-- Tablo -->
     <section class="table-container">
       <table>
         <thead>
-          <tr><th>Tarih</th><th>Gün</th><th>Hicrî Tarih</th><th>İmsak</th><th>Akşam (İftar)</th><th>Oruç Süresi</th></tr>
+          <tr>
+            <th>Tarih</th>
+            <th>Gün</th>
+            <th>Hicrî Tarih</th>
+            <th>İmsak</th>
+            <th>Akşam (İftar)</th>
+            <th>Oruç Süresi</th>
+          </tr>
         </thead>
-        <tbody id="table-body"></tbody>
+        <tbody id="table-body">
+          <!-- Veriler buraya JS ile gelecek -->
+        </tbody>
       </table>
     </section>
 
     <div class="footer-note" id="footer-note">
-      Bursa / Mudanya için 2026 Ramazan ayı – rozetler önceki güne göre farkı gösterir.
+      Bursa / Mudanya için 2026 Ramazan ayı verileri. Rozetler bir önceki güne göre değişimi gösterir.
     </div>
   </div>
 
-<script>
-const allData={ "Bursa":{ "Bursa":[
-{date:"19 Şubat 2026",day:"Perşembe",hijri:"1 Ramazan 1447",imsak:"06:21",iftar:"18:50",durationMinutes:749,duration:"12:29"},
-{date:"20 Şubat 2026",day:"Cuma",hijri:"2 Ramazan 1447",imsak:"06:20",iftar:"18:51",durationMinutes:751,duration:"12:31"},
-{date:"21 Şubat 2026",day:"Cumartesi",hijri:"3 Ramazan 1447",imsak:"06:19",iftar:"18:52",durationMinutes:753,duration:"12:33"},
-{date:"22 Şubat 2026",day:"Pazar",hijri:"4 Ramazan 1447",imsak:"06:17",iftar:"18:54",durationMinutes:757,duration:"12:37"},
-{date:"23 Şubat 2026",day:"Pazartesi",hijri:"5 Ramazan 1447",imsak:"06:16",iftar:"18:55",durationMinutes:759,duration:"12:39"},
-{date:"24 Şubat 2026",day:"Salı",hijri:"6 Ramazan 1447",imsak:"06:15",iftar:"18:56",durationMinutes:761,duration:"12:41"},
-{date:"25 Şubat 2026",day:"Çarşamba",hijri:"7 Ramazan 1447",imsak:"06:13",iftar:"18:57",durationMinutes:764,duration:"12:44"},
-{date:"26 Şubat 2026",day:"Perşembe",hijri:"8 Ramazan 1447",imsak:"06:12",iftar:"18:58",durationMinutes:766,duration:"12:46"},
-{date:"27 Şubat 2026",day:"Cuma",hijri:"9 Ramazan 1447",imsak:"06:11",iftar:"18:59",durationMinutes:768,duration:"12:48"},
-{date:"28 Şubat 2026",day:"Cumartesi",hijri:"10 Ramazan 1447",imsak:"06:09",iftar:"19:00",durationMinutes:771,duration:"12:51"},
-{date:"01 Mart 2026",day:"Pazar",hijri:"11 Ramazan 1447",imsak:"06:08",iftar:"19:02",durationMinutes:774,duration:"12:54"},
-{date:"02 Mart 2026",day:"Pazartesi",hijri:"12 Ramazan 1447",imsak:"06:06",iftar:"19:03",durationMinutes:777,duration:"12:57"},
-{date:"03 Mart 2026",day:"Salı",hijri:"13 Ramazan 1447",imsak:"06:05",iftar:"19:04",durationMinutes:779,duration:"12:59"},
-{date:"04 Mart 2026",day:"Çarşamba",hijri:"14 Ramazan 1447",imsak:"06:03",iftar:"19:05",durationMinutes:782,duration:"13:02"},
-{date:"05 Mart 2026",day:"Perşembe",hijri:"15 Ramazan 1447",imsak:"06:02",iftar:"19:06",durationMinutes:784,duration:"13:04"},
-{date:"06 Mart 2026",day:"Cuma",hijri:"16 Ramazan 1447",imsak:"06:00",iftar:"19:07",durationMinutes:787,duration:"13:07"},
-{date:"07 Mart 2026",day:"Cumartesi",hijri:"17 Ramazan 1447",imsak:"05:59",iftar:"19:08",durationMinutes:789,duration:"13:09"},
-{date:"08 Mart 2026",day:"Pazar",hijri:"18 Ramazan 1447",imsak:"05:57",iftar:"19:09",durationMinutes:792,duration:"13:12"},
-{date:"09 Mart 2026",day:"Pazartesi",hijri:"19 Ramazan 1447",imsak:"05:55",iftar:"19:10",durationMinutes:795,duration:"13:15"},
-{date:"10 Mart 2026",day:"Salı",hijri:"20 Ramazan 1447",imsak:"05:54",iftar:"19:11",durationMinutes:797,duration:"13:17"},
-{date:"11 Mart 2026",day:"Çarşamba",hijri:"21 Ramazan 1447",imsak:"05:52",iftar:"19:12",durationMinutes:800,duration:"13:20"},
-{date:"12 Mart 2026",day:"Perşembe",hijri:"22 Ramazan 1447",imsak:"05:50",iftar:"19:14",durationMinutes:804,duration:"13:24"},
-{date:"13 Mart 2026",day:"Cuma",hijri:"23 Ramazan 1447",imsak:"05:49",iftar:"19:15",durationMinutes:806,duration:"13:26"},
-{date:"14 Mart 2026",day:"Cumartesi",hijri:"24 Ramazan 1447",imsak:"05:47",iftar:"19:16",durationMinutes:809,duration:"13:29"},
-{date:"15 Mart 2026",day:"Pazar",hijri:"25 Ramazan 1447",imsak:"05:45",iftar:"19:17",durationMinutes:812,duration:"13:32"},
-{date:"16 Mart 2026",day:"Pazartesi",hijri:"26 Ramazan 1447",imsak:"05:44",iftar:"19:18",durationMinutes:814,duration:"13:34"},
-{date:"17 Mart 2026",day:"Salı",hijri:"27 Ramazan 1447",imsak:"05:42",iftar:"19:19",durationMinutes:817,duration:"13:37"},
-{date:"18 Mart 2026",day:"Çarşamba",hijri:"28 Ramazan 1447",imsak:"05:40",iftar:"19:20",durationMinutes:820,duration:"13:40"},
-{date:"19 Mart 2026",day:"Perşembe",hijri:"29 Ramazan 1447",imsak:"05:39",iftar:"19:21",durationMinutes:822,duration:"13:42"}
-]}};
+  <script>
+    // VERİ SETİ - TAM LİSTE
+    const allData = {
+      "Bursa": {
+        "Mudanya": [
+          { date: "19 Şubat 2026", day: "Perşembe", hijri: "1 Ramazan 1447", imsak: "06:21", iftar: "18:50", duration: "12:29", durationMinutes: 749 },
+          { date: "20 Şubat 2026", day: "Cuma", hijri: "2 Ramazan 1447", imsak: "06:20", iftar: "18:51", duration: "12:31", durationMinutes: 751 },
+          { date: "21 Şubat 2026", day: "Cumartesi", hijri: "3 Ramazan 1447", imsak: "06:19", iftar: "18:52", duration: "12:33", durationMinutes: 753 },
+          { date: "22 Şubat 2026", day: "Pazar", hijri: "4 Ramazan 1447", imsak: "06:17", iftar: "18:54", duration: "12:37", durationMinutes: 757 },
+          { date: "23 Şubat 2026", day: "Pazartesi", hijri: "5 Ramazan 1447", imsak: "06:16", iftar: "18:55", duration: "12:39", durationMinutes: 759 },
+          { date: "24 Şubat 2026", day: "Salı", hijri: "6 Ramazan 1447", imsak: "06:15", iftar: "18:56", duration: "12:41", durationMinutes: 761 },
+          { date: "25 Şubat 2026", day: "Çarşamba", hijri: "7 Ramazan 1447", imsak: "06:13", iftar: "18:57", duration: "12:44", durationMinutes: 764 },
+          { date: "26 Şubat 2026", day: "Perşembe", hijri: "8 Ramazan 1447", imsak: "06:12", iftar: "18:58", duration: "12:46", durationMinutes: 766 },
+          { date: "27 Şubat 2026", day: "Cuma", hijri: "9 Ramazan 1447", imsak: "06:11", iftar: "18:59", duration: "12:48", durationMinutes: 768 },
+          { date: "28 Şubat 2026", day: "Cumartesi", hijri: "10 Ramazan 1447", imsak: "06:09", iftar: "19:00", duration: "12:51", durationMinutes: 771 },
+          { date: "01 Mart 2026", day: "Pazar", hijri: "11 Ramazan 1447", imsak: "06:08", iftar: "19:02", duration: "12:54", durationMinutes: 774 },
+          { date: "02 Mart 2026", day: "Pazartesi", hijri: "12 Ramazan 1447", imsak: "06:06", iftar: "19:03", duration: "12:57", durationMinutes: 777 },
+          { date: "03 Mart 2026", day: "Salı", hijri: "13 Ramazan 1447", imsak: "06:05", iftar: "19:04", duration: "12:59", durationMinutes: 779 },
+          { date: "04 Mart 2026", day: "Çarşamba", hijri: "14 Ramazan 1447", imsak: "06:03", iftar: "19:05", duration: "13:02", durationMinutes: 782 },
+          { date: "05 Mart 2026", day: "Perşembe", hijri: "15 Ramazan 1447", imsak: "06:02", iftar: "19:06", duration: "13:04", durationMinutes: 784 },
+          { date: "06 Mart 2026", day: "Cuma", hijri: "16 Ramazan 1447", imsak: "06:00", iftar: "19:07", duration: "13:07", durationMinutes: 787 },
+          { date: "07 Mart 2026", day: "Cumartesi", hijri: "17 Ramazan 1447", imsak: "05:59", iftar: "19:08", duration: "13:09", durationMinutes: 789 },
+          { date: "08 Mart 2026", day: "Pazar", hijri: "18 Ramazan 1447", imsak: "05:57", iftar: "19:09", duration: "13:12", durationMinutes: 792 },
+          { date: "09 Mart 2026", day: "Pazartesi", hijri: "19 Ramazan 1447", imsak: "05:55", iftar: "19:10", duration: "13:15", durationMinutes: 795 },
+          { date: "10 Mart 2026", day: "Salı", hijri: "20 Ramazan 1447", imsak: "05:54", iftar: "19:11", duration: "13:17", durationMinutes: 797 },
+          { date: "11 Mart 2026", day: "Çarşamba", hijri: "21 Ramazan 1447", imsak: "05:52", iftar: "19:12", duration: "13:20", durationMinutes: 800 },
+          { date: "12 Mart 2026", day: "Perşembe", hijri: "22 Ramazan 1447", imsak: "05:50", iftar: "19:14", duration: "13:24", durationMinutes: 804 },
+          { date: "13 Mart 2026", day: "Cuma", hijri: "23 Ramazan 1447", imsak: "05:49", iftar: "19:15", duration: "13:26", durationMinutes: 806 },
+          { date: "14 Mart 2026", day: "Cumartesi", hijri: "24 Ramazan 1447", imsak: "05:47", iftar: "19:16", duration: "13:29", durationMinutes: 809 },
+          { date: "15 Mart 2026", day: "Pazar", hijri: "25 Ramazan 1447", imsak: "05:45", iftar: "19:17", duration: "13:32", durationMinutes: 812 },
+          { date: "16 Mart 2026", day: "Pazartesi", hijri: "26 Ramazan 1447", imsak: "05:44", iftar: "19:18", duration: "13:34", durationMinutes: 814 },
+          { date: "17 Mart 2026", day: "Salı", hijri: "27 Ramazan 1447", imsak: "05:42", iftar: "19:19", duration: "13:37", durationMinutes: 817 },
+          { date: "18 Mart 2026", day: "Çarşamba", hijri: "28 Ramazan 1447", imsak: "05:40", iftar: "19:20", duration: "13:40", durationMinutes: 820 },
+          { date: "19 Mart 2026", day: "Perşembe", hijri: "29 Ramazan 1447", imsak: "05:39", iftar: "19:21", duration: "13:42", durationMinutes: 822 }
+        ]
+      }
+    };
 
-function minutesToHHMM(m){const h=Math.floor(m/60),mm=m%60;return `${h}:${mm.toString().padStart(2,'0')}`;}
-function toMinutes(t){const [h,m]=t.split(':').map(Number);return h*60+m;}
-function diffBadge(delta){
- if(delta===0)return"";
- const abs=Math.abs(delta);
- const dir=delta<0?"up":"down";
- const arrow=delta<0?"▲":"▼";
- return `<span class="badge ${dir}"><span class="arrow">${arrow}</span>${abs}dk</span>`;
-}
+    // YARDIMCI FONSİYONLAR
+    function minutesToHHMM(mins) {
+      const h = Math.floor(mins / 60);
+      const m = mins % 60;
+      return `${h}:${m.toString().padStart(2, '0')}`;
+    }
 
-function getCurrentData(){const c=document.getElementById("city-hidden").value,d=document.getElementById("district-hidden").value;return allData[c][d];}
+    function timeToMinutes(timeStr) {
+      const [h, m] = timeStr.split(':').map(Number);
+      return h * 60 + m;
+    }
 
-function populateTable(){
- const data=getCurrentData();
- const tbody=document.getElementById("table-body");
- tbody.innerHTML="";
- data.forEach((r,i)=>{
-   let bI="",bA="";
-   if(i>0){const p=data[i-1];bI=diffBadge(toMinutes(r.imsak)-toMinutes(p.imsak));bA=diffBadge(toMinutes(r.iftar)-toMinutes(p.iftar));}
-   const tr=document.createElement("tr");
-   tr.innerHTML=`<td>${r.date}</td><td>${r.day}</td><td>${r.hijri}</td><td>${r.imsak}${bI}</td><td>${r.iftar}${bA}</td><td class="duration">${r.duration}</td>`;
-   tbody.appendChild(tr);
- });
-}
+    // BADGE OLUŞTURUCU FONKSİYON
+    function createBadge(currentMin, prevMin) {
+      const diff = currentMin - prevMin;
+      if (diff === 0) return ''; // Fark yoksa badge yok
 
-function populateCards(){
- const data=getCurrentData();
- let sum=0,min=data[0],max=data[0];
- data.forEach(r=>{sum+=r.durationMinutes;if(r.durationMinutes<min.durationMinutes)min=r;if(r.durationMinutes>max.durationMinutes)max=r;});
- const avg=Math.round(sum/data.length);
- document.getElementById("total-days").textContent=data.length;
- document.getElementById("min-duration").textContent=minutesToHHMM(min.durationMinutes);
- document.getElementById("min-duration-date").textContent=min.date;
- document.getElementById("max-duration").textContent=minutesToHHMM(max.durationMinutes);
- document.getElementById("max-duration-date").textContent=max.date;
- document.getElementById("avg-duration").textContent=minutesToHHMM(avg);
-}
+      // Fark varsa
+      const absDiff = Math.abs(diff);
+      
+      // Mantık: 
+      // Eğer değer AZALDIYSA (Negatif) -> Aşağı Yönlü
+      // Eğer değer ARTTIYSA (Pozitif) -> Yukarı Yönlü
+      // Genelde İmsak kısalıyorsa (erken oluyorsa) -> Yeşil veya değişim vurgusu
+      // İftar uzuyorsa (geç oluyorsa) -> Kırmızı veya değişim vurgusu
+      
+      // Sizin isteğiniz: Yukarı/Aşağı ok ve rakam.
+      // Arrow sembolleri: ▲ ▼
+      
+      let arrow = '';
+      let colorClass = '';
 
-document.addEventListener("DOMContentLoaded",()=>{populateTable();populateCards();});
-</script>
+      if (diff < 0) {
+        // Azalış (Erkenleşme)
+        arrow = '▼'; 
+        colorClass = 'green'; // Azalma genelde yeşil ile gösterilir
+      } else {
+        // Artış (Gecikme)
+        arrow = '▲'; 
+        colorClass = 'red';   // Artma genelde kırmızı
+      }
+
+      return `<span class="badge ${colorClass}"><span class="arrow">${arrow}</span>${absDiff}dk</span>`;
+    }
+
+    // GÜNCEL VERİYİ ÇEKME
+    function getCurrentData() {
+      const city = document.getElementById("city-hidden").value;
+      const district = document.getElementById("district-hidden").value;
+      
+      // Hata kontrolü: veri yoksa boş dizi dön
+      if (!allData[city] || !allData[city][district]) {
+        console.error("Veri bulunamadı!");
+        return [];
+      }
+      return allData[city][district];
+    }
+
+    // TABLOYU DOLDURMA
+    function populateTable() {
+      const tbody = document.getElementById("table-body");
+      tbody.innerHTML = ""; // Temizle
+
+      const data = getCurrentData();
+      
+      data.forEach((row, index) => {
+        let badgeImsak = "";
+        let badgeIftar = "";
+
+        // İlk gün hariç hesapla
+        if (index > 0) {
+          const prevRow = data[index - 1];
+          
+          const currentImsak = timeToMinutes(row.imsak);
+          const prevImsak = timeToMinutes(prevRow.imsak);
+          badgeImsak = createBadge(currentImsak, prevImsak);
+
+          const currentIftar = timeToMinutes(row.iftar);
+          const prevIftar = timeToMinutes(prevRow.iftar);
+          badgeIftar = createBadge(currentIftar, prevIftar);
+        }
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${row.date}</td>
+          <td>${row.day}</td>
+          <td>${row.hijri}</td>
+          <td>${row.imsak} ${badgeImsak}</td>
+          <td>${row.iftar} ${badgeIftar}</td>
+          <td class="duration">${row.duration}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // KARTLARI DOLDURMA
+    function populateCards() {
+      const data = getCurrentData();
+      if (data.length === 0) return;
+
+      const totalDays = data.length;
+      document.getElementById("total-days").textContent = totalDays;
+
+      let minRow = data[0];
+      let maxRow = data[0];
+      let totalMinutes = 0;
+
+      data.forEach(row => {
+        totalMinutes += row.durationMinutes;
+        if (row.durationMinutes < minRow.durationMinutes) minRow = row;
+        if (row.durationMinutes > maxRow.durationMinutes) maxRow = row;
+      });
+
+      const avgMinutes = Math.round(totalMinutes / totalDays);
+
+      document.getElementById("min-duration").textContent = minutesToHHMM(minRow.durationMinutes);
+      document.getElementById("min-duration-date").textContent = `${minRow.date}`;
+      
+      document.getElementById("max-duration").textContent = minutesToHHMM(maxRow.durationMinutes);
+      document.getElementById("max-duration-date").textContent = `${maxRow.date}`;
+
+      document.getElementById("avg-duration").textContent = minutesToHHMM(avgMinutes);
+    }
+
+    // BAŞLATMA
+    document.addEventListener("DOMContentLoaded", () => {
+      populateTable();
+      populateCards();
+    });
+
+  </script>
 </body>
 </html>
