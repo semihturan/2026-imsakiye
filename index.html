@@ -186,41 +186,41 @@
 
   <script>
     // VERİ SETİ - TAM LİSTE
-    const allData = {
-      "Bursa": {
-        "Mudanya": [
-          { date: "19 Şubat 2026", day: "Perşembe", hijri: "1 Ramazan 1447", imsak: "06:21", iftar: "18:50", duration: "12:29", durationMinutes: 749 },
-          { date: "20 Şubat 2026", day: "Cuma", hijri: "2 Ramazan 1447", imsak: "06:20", iftar: "18:51", duration: "12:31", durationMinutes: 751 },
-          { date: "21 Şubat 2026", day: "Cumartesi", hijri: "3 Ramazan 1447", imsak: "06:19", iftar: "18:52", duration: "12:33", durationMinutes: 753 },
-          { date: "22 Şubat 2026", day: "Pazar", hijri: "4 Ramazan 1447", imsak: "06:17", iftar: "18:54", duration: "12:37", durationMinutes: 757 },
-          { date: "23 Şubat 2026", day: "Pazartesi", hijri: "5 Ramazan 1447", imsak: "06:16", iftar: "18:55", duration: "12:39", durationMinutes: 759 },
-          { date: "24 Şubat 2026", day: "Salı", hijri: "6 Ramazan 1447", imsak: "06:15", iftar: "18:56", duration: "12:41", durationMinutes: 761 },
-          { date: "25 Şubat 2026", day: "Çarşamba", hijri: "7 Ramazan 1447", imsak: "06:13", iftar: "18:57", duration: "12:44", durationMinutes: 764 },
-          { date: "26 Şubat 2026", day: "Perşembe", hijri: "8 Ramazan 1447", imsak: "06:12", iftar: "18:58", duration: "12:46", durationMinutes: 766 },
-          { date: "27 Şubat 2026", day: "Cuma", hijri: "9 Ramazan 1447", imsak: "06:11", iftar: "18:59", duration: "12:48", durationMinutes: 768 },
-          { date: "28 Şubat 2026", day: "Cumartesi", hijri: "10 Ramazan 1447", imsak: "06:09", iftar: "19:00", duration: "12:51", durationMinutes: 771 },
-          { date: "01 Mart 2026", day: "Pazar", hijri: "11 Ramazan 1447", imsak: "06:08", iftar: "19:02", duration: "12:54", durationMinutes: 774 },
-          { date: "02 Mart 2026", day: "Pazartesi", hijri: "12 Ramazan 1447", imsak: "06:06", iftar: "19:03", duration: "12:57", durationMinutes: 777 },
-          { date: "03 Mart 2026", day: "Salı", hijri: "13 Ramazan 1447", imsak: "06:05", iftar: "19:04", duration: "12:59", durationMinutes: 779 },
-          { date: "04 Mart 2026", day: "Çarşamba", hijri: "14 Ramazan 1447", imsak: "06:03", iftar: "19:05", duration: "13:02", durationMinutes: 782 },
-          { date: "05 Mart 2026", day: "Perşembe", hijri: "15 Ramazan 1447", imsak: "06:02", iftar: "19:06", duration: "13:04", durationMinutes: 784 },
-          { date: "06 Mart 2026", day: "Cuma", hijri: "16 Ramazan 1447", imsak: "06:00", iftar: "19:07", duration: "13:07", durationMinutes: 787 },
-          { date: "07 Mart 2026", day: "Cumartesi", hijri: "17 Ramazan 1447", imsak: "05:59", iftar: "19:08", duration: "13:09", durationMinutes: 789 },
-          { date: "08 Mart 2026", day: "Pazar", hijri: "18 Ramazan 1447", imsak: "05:57", iftar: "19:09", duration: "13:12", durationMinutes: 792 },
-          { date: "09 Mart 2026", day: "Pazartesi", hijri: "19 Ramazan 1447", imsak: "05:55", iftar: "19:10", duration: "13:15", durationMinutes: 795 },
-          { date: "10 Mart 2026", day: "Salı", hijri: "20 Ramazan 1447", imsak: "05:54", iftar: "19:11", duration: "13:17", durationMinutes: 797 },
-          { date: "11 Mart 2026", day: "Çarşamba", hijri: "21 Ramazan 1447", imsak: "05:52", iftar: "19:12", duration: "13:20", durationMinutes: 800 },
-          { date: "12 Mart 2026", day: "Perşembe", hijri: "22 Ramazan 1447", imsak: "05:50", iftar: "19:14", duration: "13:24", durationMinutes: 804 },
-          { date: "13 Mart 2026", day: "Cuma", hijri: "23 Ramazan 1447", imsak: "05:49", iftar: "19:15", duration: "13:26", durationMinutes: 806 },
-          { date: "14 Mart 2026", day: "Cumartesi", hijri: "24 Ramazan 1447", imsak: "05:47", iftar: "19:16", duration: "13:29", durationMinutes: 809 },
-          { date: "15 Mart 2026", day: "Pazar", hijri: "25 Ramazan 1447", imsak: "05:45", iftar: "19:17", duration: "13:32", durationMinutes: 812 },
-          { date: "16 Mart 2026", day: "Pazartesi", hijri: "26 Ramazan 1447", imsak: "05:44", iftar: "19:18", duration: "13:34", durationMinutes: 814 },
-          { date: "17 Mart 2026", day: "Salı", hijri: "27 Ramazan 1447", imsak: "05:42", iftar: "19:19", duration: "13:37", durationMinutes: 817 },
-          { date: "18 Mart 2026", day: "Çarşamba", hijri: "28 Ramazan 1447", imsak: "05:40", iftar: "19:20", duration: "13:40", durationMinutes: 820 },
-          { date: "19 Mart 2026", day: "Perşembe", hijri: "29 Ramazan 1447", imsak: "05:39", iftar: "19:21", duration: "13:42", durationMinutes: 822 }
-        ]
-      }
-    };
+const allData = {
+  "Bursa": {
+    "Mudanya": [
+      { date: "19 Şubat 2026", day: "Perşembe", hijri: "1 Ramazan 1447", imsak: "06:22", iftar: "18:51", duration: "12:29", durationMinutes: 749 },
+      { date: "20 Şubat 2026", day: "Cuma", hijri: "2 Ramazan 1447", imsak: "06:21", iftar: "18:52", duration: "12:31", durationMinutes: 751 },
+      { date: "21 Şubat 2026", day: "Cumartesi", hijri: "3 Ramazan 1447", imsak: "06:19", iftar: "18:53", duration: "12:34", durationMinutes: 754 },
+      { date: "22 Şubat 2026", day: "Pazar", hijri: "4 Ramazan 1447", imsak: "06:18", iftar: "18:54", duration: "12:36", durationMinutes: 756 },
+      { date: "23 Şubat 2026", day: "Pazartesi", hijri: "5 Ramazan 1447", imsak: "06:17", iftar: "18:55", duration: "12:38", durationMinutes: 758 },
+      { date: "24 Şubat 2026", day: "Salı", hijri: "6 Ramazan 1447", imsak: "06:15", iftar: "18:56", duration: "12:41", durationMinutes: 761 },
+      { date: "25 Şubat 2026", day: "Çarşamba", hijri: "7 Ramazan 1447", imsak: "06:14", iftar: "18:58", duration: "12:44", durationMinutes: 764 },
+      { date: "26 Şubat 2026", day: "Perşembe", hijri: "8 Ramazan 1447", imsak: "06:13", iftar: "18:59", duration: "12:46", durationMinutes: 766 },
+      { date: "27 Şubat 2026", day: "Cuma", hijri: "9 Ramazan 1447", imsak: "06:11", iftar: "19:00", duration: "12:49", durationMinutes: 769 },
+      { date: "28 Şubat 2026", day: "Cumartesi", hijri: "10 Ramazan 1447", imsak: "06:10", iftar: "19:01", duration: "12:51", durationMinutes: 771 },
+      { date: "1 Mart 2026", day: "Pazar", hijri: "11 Ramazan 1447", imsak: "06:08", iftar: "19:02", duration: "12:54", durationMinutes: 774 },
+      { date: "2 Mart 2026", day: "Pazartesi", hijri: "12 Ramazan 1447", imsak: "06:07", iftar: "19:03", duration: "12:56", durationMinutes: 776 },
+      { date: "3 Mart 2026", day: "Salı", hijri: "13 Ramazan 1447", imsak: "06:05", iftar: "19:04", duration: "12:59", durationMinutes: 779 },
+      { date: "4 Mart 2026", day: "Çarşamba", hijri: "14 Ramazan 1447", imsak: "06:04", iftar: "19:05", duration: "13:01", durationMinutes: 781 },
+      { date: "5 Mart 2026", day: "Perşembe", hijri: "15 Ramazan 1447", imsak: "06:02", iftar: "19:07", duration: "13:05", durationMinutes: 785 },
+      { date: "6 Mart 2026", day: "Cuma", hijri: "16 Ramazan 1447", imsak: "06:01", iftar: "19:08", duration: "13:07", durationMinutes: 787 },
+      { date: "7 Mart 2026", day: "Cumartesi", hijri: "17 Ramazan 1447", imsak: "05:59", iftar: "19:09", duration: "13:10", durationMinutes: 790 },
+      { date: "8 Mart 2026", day: "Pazar", hijri: "18 Ramazan 1447", imsak: "05:57", iftar: "19:10", duration: "13:13", durationMinutes: 793 },
+      { date: "9 Mart 2026", day: "Pazartesi", hijri: "19 Ramazan 1447", imsak: "05:56", iftar: "19:11", duration: "13:15", durationMinutes: 795 },
+      { date: "10 Mart 2026", day: "Salı", hijri: "20 Ramazan 1447", imsak: "05:54", iftar: "19:12", duration: "13:18", durationMinutes: 798 },
+      { date: "11 Mart 2026", day: "Çarşamba", hijri: "21 Ramazan 1447", imsak: "05:53", iftar: "19:13", duration: "13:20", durationMinutes: 800 },
+      { date: "12 Mart 2026", day: "Perşembe", hijri: "22 Ramazan 1447", imsak: "05:51", iftar: "19:14", duration: "13:23", durationMinutes: 803 },
+      { date: "13 Mart 2026", day: "Cuma", hijri: "23 Ramazan 1447", imsak: "05:49", iftar: "19:15", duration: "13:26", durationMinutes: 806 },
+      { date: "14 Mart 2026", day: "Cumartesi", hijri: "24 Ramazan 1447", imsak: "05:48", iftar: "19:16", duration: "13:28", durationMinutes: 808 },
+      { date: "15 Mart 2026", day: "Pazar", hijri: "25 Ramazan 1447", imsak: "05:46", iftar: "19:17", duration: "13:31", durationMinutes: 811 },
+      { date: "16 Mart 2026", day: "Pazartesi", hijri: "26 Ramazan 1447", imsak: "05:44", iftar: "19:18", duration: "13:34", durationMinutes: 814 },
+      { date: "17 Mart 2026", day: "Salı", hijri: "27 Ramazan 1447", imsak: "05:42", iftar: "19:19", duration: "13:37", durationMinutes: 817 },
+      { date: "18 Mart 2026", day: "Çarşamba", hijri: "28 Ramazan 1447", imsak: "05:41", iftar: "19:21", duration: "13:40", durationMinutes: 820 },
+      { date: "19 Mart 2026", day: "Perşembe", hijri: "29 Ramazan 1447", imsak: "05:39", iftar: "19:22", duration: "13:43", durationMinutes: 823 }
+    ]
+  }
+};
 
     // YARDIMCI FONSİYONLAR
     function minutesToHHMM(mins) {
